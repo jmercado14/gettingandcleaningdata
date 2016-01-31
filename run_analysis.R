@@ -26,7 +26,7 @@ m.data <- rbind(test, train)
 
 # extract only the measurements on the mean and
 # standard deviation for each measurement
-f.data <- m.data[,c(grep("(*mean*)|(*std*)", names(m.data)), 562, 563, 564)]
+f.data <- m.data[,c(grep("(*mean*)|(*std*)", names(m.data)), 562, 563)]
 
 # Use descriptive activity names to name the activities in the data set
 names(f.data)[names(f.data)=='V1'] <- 'activity'
@@ -46,4 +46,5 @@ names(f.data) <- new_names
 
 # create a second, independent tidy data set with the average
 # of each variable for each activity and each subject
-tidy <- summarize_each(f.data, mean(), subject, activity)
+tidy <- group_by(f.data, subject, activity)
+tidy.final <- summarize_each(tidy, funs(mean))
