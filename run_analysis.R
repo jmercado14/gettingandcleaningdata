@@ -45,7 +45,7 @@ names(f.data)[names(f.data)=='act.V2'] <- 'activity'
 curr_names <- names(f.data)
 new_names <- gsub("\\.", "", curr_names)
 new_names <- gsub("^t", "time", new_names)
-new_names <- gsub("^f", "frew", new_names)
+new_names <- gsub("^f", "freq", new_names)
 names(f.data) <- new_names
 
 # SECTION 5. CREATE A SECOND, INDEPENDENT TIDY DATA SET WITH THE AVERAGE
